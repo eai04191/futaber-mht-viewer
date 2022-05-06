@@ -42,7 +42,10 @@ document.querySelector("#file").addEventListener("change", async function (e) {
 
         if (part.headers.includes("Content-Type: text/html")) {
             const element = document.createElement("div");
-            element.innerHTML = cptable.utils.decode(932, atob(part.body));
+            let html = cptable.utils.decode(932, atob(part.body));
+            // 外部リンクのjump.phpを無効化
+            html = html.replaceAll(`href="/bin/jump.php?`, `href="`);
+            element.innerHTML = html;
             document.querySelector("#result").appendChild(element);
         }
 
