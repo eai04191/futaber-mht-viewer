@@ -32,6 +32,7 @@ document.querySelector("#file").addEventListener("change", async function (e) {
         };
     });
 
+    document.querySelector("#result").innerHTML = "";
     processedParts.forEach((part) => {
         if (!part) return;
 
