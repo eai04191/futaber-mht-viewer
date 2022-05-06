@@ -1,21 +1,16 @@
 function setError(message, ...args) {
     console.error(message, args);
     alert(message);
-    // const errorElement = document.getElementById("error");
-    // errorElement.innerText = message;
 }
 
 document.querySelector("#file").addEventListener("change", async function (e) {
     const file = e.target.files[0];
-    if (!file) {
-        error("No file selected");
-        return;
-    }
+    if (!file) return;
 
     const text = await file.text().then((text) => text.replace(/\r\n/g, "\n"));
     const boundary = text.match(/\tboundary="(.+)";/)[1];
     if (!boundary) {
-        error("No boundary found");
+        setError("No boundary found");
         return;
     }
 
