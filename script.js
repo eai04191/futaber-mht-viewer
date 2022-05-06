@@ -37,10 +37,13 @@ document.querySelector("#file").addEventListener("change", async function (e) {
         if (!part) return;
 
         if (part.headers.includes("Content-Type: text/html")) {
-            const element = document.createElement("div");
+            const element = document.createElement("main");
             let html = cptable.utils.decode(932, atob(part.body));
             // 外部リンクのjump.phpを無効化
             html = html.replaceAll(`href="/bin/jump.php?`, `href="`);
+            // CSSで消せないやつを消す
+            // prettier-ignore
+            html = html.replace(`[<a href="/b/futaba.htm">掲示板に戻る</a>]`, "");
             element.innerHTML = html;
             document.querySelector("#result").appendChild(element);
         }
