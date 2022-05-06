@@ -6,6 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>futaber MHT Viewer</title>
         <style>
+            .no-margin {
+                margin: 0;
+            }
             body {
                 background: #ffffee;
                 color: #800000;
@@ -22,10 +25,16 @@
     </head>
     <body>
         <div>
+            <h1 class="no-margin">futaber MHT Viewer</h1>
+            <p class="no-margin">
+                <a href="https://github.com/eai04191/futaber-mht-viewer"
+                    >Open Source on GitHub</a
+                >
+            </p>
+            <hr />
             <label for="file">MHT file</label>
             <input type="file" id="file" />
         </div>
-        <hr />
 
         <div id="result"></div>
 
